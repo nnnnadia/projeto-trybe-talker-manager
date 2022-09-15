@@ -1,5 +1,12 @@
 const express = require('express');
 const talkerFS = require('../data/talkerFS');
+const {
+  nameValidation,
+  ageValidation,
+  talkValidation,
+  watchedAtValidation,
+  rateValidation,
+} = require('../middleware');
 
 const router = express.Router();
 
@@ -22,5 +29,19 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
+
+router.post(
+  '/',
+  nameValidation,
+  ageValidation,
+  talkValidation,
+  watchedAtValidation,
+  rateValidation,
+  async (req, res) => {
+    const newTalker = req.body;
+    const talkerWithId = await talkerFS.writeTalkerFile(newTalker);
+    res.status(201).json({ ...talkerWithId });
+  },
+);
 
 module.exports = router;
