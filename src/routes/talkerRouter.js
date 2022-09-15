@@ -1,6 +1,6 @@
 const express = require('express');
 const talkerFS = require('../data/talkerFS');
-const { talkerValidation } = require('../middleware');
+const { talkerValidation, tokenValidation } = require('../middleware');
 
 const router = express.Router();
 
@@ -24,7 +24,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/', talkerValidation, async (req, res) => {
+router.post('/', tokenValidation, talkerValidation, async (req, res) => {
   const newTalker = req.body;
   const talkerWithId = await talkerFS.writeTalkerFile(newTalker);
   res.status(201).json({ ...talkerWithId });
