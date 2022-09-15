@@ -1,17 +1,7 @@
 const loginValidation = require('./loginValidation');
-const {
-  nameValidation,
-  ageValidation,
-  talkValidation,
-  watchedAtValidation,
-  rateValidation,
-} = require('./talkerValidation');
+const talkerValidation = require('./talkerValidation');
 
 module.exports = {
   loginValidation,
-  nameValidation,
-  ageValidation,
-  talkValidation,
-  watchedAtValidation,
-  rateValidation,
+  talkerValidation,
 };
