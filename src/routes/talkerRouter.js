@@ -4,6 +4,18 @@ const { talkerValidation, tokenValidation } = require('../middleware');
 
 const router = express.Router();
 
+router.get('/search', tokenValidation, async (req, res) => {
+  const { q } = req.query;
+  if (!q) return res.redirect('..');
+  try {
+    const talkerInfo = await talkerFS.getTalkerByQuery(q);
+    if (talkerInfo) return res.status(200).json(talkerInfo);
+    res.status(404).json({ message: 'Pessoa palestrante não encontrada' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 router.get('/', async (_req, res) => {
   try {
     const talkerList = await talkerFS.readTalkerFile();
