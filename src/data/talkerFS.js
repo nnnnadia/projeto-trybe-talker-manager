@@ -15,11 +15,13 @@ const getTalkerById = async (id) => {
   return talkerFile.find((talker) => talker.id === +id);
 };
 
-const writeTalkerFile = async (newTalker) => {
+const generateId = (talkerFile) => talkerFile[talkerFile.length - 1].id + 1;
+
+const writeTalkerFile = async (talker) => {
   try {
     const talkerFile = await readTalkerFile();
-    const nextId = talkerFile[talkerFile.length - 1].id + 1;
-    const talkerWithId = { ...newTalker, id: nextId };
+    const id = !talker.id ? generateId(talkerFile) : talker.id;
+    const talkerWithId = { ...talker, id };
     talkerFile.push(talkerWithId);
     await fs.writeFile(join(__dirname, '../talker.json'), JSON.stringify(talkerFile));
     return talkerWithId;
