@@ -41,4 +41,10 @@ router.put('/:id', tokenValidation, talkerValidation, async (req, res) => {
   res.status(200).json({ ...talkerWithId });
 });
 
+router.delete('/:id', tokenValidation, async (req, res) => {
+  const { id } = req.params;
+  await talkerFS.removeTalkerById(+id);
+  res.status(204).json({});
+});
+
 module.exports = router;
