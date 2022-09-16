@@ -15,6 +15,15 @@ const getTalkerById = async (id) => {
   return talkerFile.find((talker) => talker.id === +id);
 };
 
+const getTalkerByQuery = async (query) => {
+  try {
+    const talkerFile = await readTalkerFile();
+    return talkerFile.filter((talker) => talker.name.includes(query));
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
 const removeTalkerById = async (id) => {
   try {
     const talkerFile = await readTalkerFile();
@@ -45,4 +54,5 @@ module.exports = {
   getTalkerById,
   writeTalkerFile,
   removeTalkerById,
+  getTalkerByQuery,
 };
