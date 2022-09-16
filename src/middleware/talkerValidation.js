@@ -6,7 +6,7 @@ const watchedAtValidation = (talker) => {
 };
 
 const rateValidation = (talker) => {
-  if (!talker.talk.rate) return 'O campo "rate" é obrigatório';
+  if (!talker.talk.rate && talker.talk.rate !== 0) return 'O campo "rate" é obrigatório';
   if (talker.talk.rate < 1 || talker.talk.rate > 5) {
     return 'O campo "rate" deve ser um inteiro de 1 à 5';
   }

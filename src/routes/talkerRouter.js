@@ -30,4 +30,15 @@ router.post('/', tokenValidation, talkerValidation, async (req, res) => {
   res.status(201).json({ ...talkerWithId });
 });
 
+router.put('/:id', tokenValidation, talkerValidation, async (req, res) => {
+  const { id } = req.params;
+  const updatedTalker = req.body;
+  await talkerFS.removeTalkerById(id);
+  const talkerWithId = await talkerFS.writeTalkerFile({
+    ...updatedTalker,
+    id,
+  });
+  res.status(200).json({ ...talkerWithId });
+});
+
 module.exports = router;
