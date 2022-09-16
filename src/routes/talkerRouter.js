@@ -26,24 +26,36 @@ router.get('/:id', async (req, res) => {
 
 router.post('/', tokenValidation, talkerValidation, async (req, res) => {
   const newTalker = req.body;
-  const talkerWithId = await talkerFS.writeTalkerFile(newTalker);
-  res.status(201).json({ ...talkerWithId });
+  try {
+    const talkerWithId = await talkerFS.writeTalkerFile(newTalker);
+    res.status(201).json({ ...talkerWithId });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 router.put('/:id', tokenValidation, talkerValidation, async (req, res) => {
   const { id } = req.params;
   const updatedTalker = req.body;
-  await talkerFS.removeTalkerById(id);
-  const talkerWithId = await talkerFS.writeTalkerFile({
-    ...updatedTalker,
-    id,
-  });
-  res.status(200).json({ ...talkerWithId });
+  try {
+    await talkerFS.removeTalkerById(id);
+    const talkerWithId = await talkerFS.writeTalkerFile({
+      ...updatedTalker,
+      id,
+    });
+    res.status(200).json({ ...talkerWithId });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
 });
 
 router.delete('/:id', tokenValidation, async (req, res) => {
   const { id } = req.params;
-  await talkerFS.removeTalkerById(+id);
+  try {
+    await talkerFS.removeTalkerById(+id);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
   res.status(204).json({});
 });
 
