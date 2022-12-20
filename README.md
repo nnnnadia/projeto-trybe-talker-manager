@@ -9,4 +9,4 @@ Aplicação de cadastro de talkers (palestrantes) em que é possível cadastrar,
 - Implementação de um backend utilizando o Express
 - Manipulação de arquivos com o módulo `fs`
 
-#### Confira os endpoints na Wiki
+#### Confira os endpoints na [Wiki](https://github.com/nnnnadia/projeto-trybe-talker-manager/wiki)
