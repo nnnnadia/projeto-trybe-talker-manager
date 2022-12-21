@@ -13,4 +13,8 @@ export const clearData = async () => {
   await api.delete('/talker');
 };
 
+export const restartData = async () => {
+  await api.post('/talker/restart');
+}
+
 export default api;

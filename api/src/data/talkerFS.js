@@ -3,7 +3,7 @@ const { join } = require('path');
 
 const whiteOutTalkerFile = async () => {
   try {
-    await fs.writeFile(join(__dirname, '../talker.json'), JSON.stringify('[]'));
+    await fs.writeFile(join(__dirname, '../talker.json'), JSON.stringify([]));
   } catch (err) {
     throw new Error(err.message);
   }
@@ -12,7 +12,7 @@ const whiteOutTalkerFile = async () => {
 const restartTalkerFile = async () => {
   try {
     const initialTalkers = await fs.readFile(join(__dirname, '../initialTalkers.json'));
-    await fs.writeFile(join(__dirname, '../talker.json'), JSON.stringify(initialTalkers));
+    await fs.writeFile(join(__dirname, '../talker.json'), initialTalkers);
   } catch (err) {
     throw new Error(err.message);
   }
