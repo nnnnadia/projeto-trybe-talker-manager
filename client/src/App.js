@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Container } from '@mui/material';
+import { Container, Typography } from '@mui/material';
 import GetTalker from './components/GetTalker';
 import { clearData } from './requestAPI';
 
@@ -12,7 +12,9 @@ function App() {
   }, []);
 
   return (
-    <Container maxWidth="md">
+    <Container maxWidth="md" sx={{ paddingBottom: 2 }}>
+      <Typography variant="h3" textAlign="end">Projeto Talker Manager</Typography>
+      <Typography variant="overline" textAlign="end" component="div" gutterBottom>Nádia Dutra Tristão</Typography>
       <GetTalker />
     </Container>
   );
