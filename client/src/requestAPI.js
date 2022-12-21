@@ -5,8 +5,8 @@ const api = axios.create({
 });
 
 export const requestData = async (endpoint) => {
-  const { data } = await api.get(endpoint);
-  return data;
+  const { data, status } = await api.get(endpoint);
+  return { data, status };
 };
 
 export const clearData = async () => {
