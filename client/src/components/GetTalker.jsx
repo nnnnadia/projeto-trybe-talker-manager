@@ -1,4 +1,4 @@
-import { Button, Chip, Stack, TextField, Typography } from '@mui/material';
+import { Button, Chip, Stack, TextField } from '@mui/material';
 import React, { useState } from 'react';
 import { requestData, restartData } from '../requestAPI';
 
@@ -33,7 +33,11 @@ export default function GetTalker() {
         REQUEST
       </Button>
     </Stack>
-    <Typography>{JSON.stringify(talkers)}</Typography>
+    <code>
+      <pre>
+        {JSON.stringify(talkers, undefined, 2)}
+      </pre>
+    </code>
     <Button
       variant="contained"
       sx={{ height: 'fit-content' }}
