@@ -1,6 +1,23 @@
 const fs = require('fs').promises;
 const { join } = require('path');
 
+const whiteOutTalkerFile = async () => {
+  try {
+    await fs.writeFile(join(__dirname, '../talker.json'), JSON.stringify('[]'));
+  } catch (err) {
+    throw new Error(err.message);
+  }
+}
+
+const restartTalkerFile = async () => {
+  try {
+    const initialTalkers = await fs.readFile(join(__dirname, '../initialTalkers.json'));
+    await fs.writeFile(join(__dirname, '../talker.json'), JSON.stringify(initialTalkers));
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
 const readTalkerFile = async () => {
   try {
     const rawFile = await fs.readFile(join(__dirname, '../talker.json'));
@@ -50,6 +67,8 @@ const writeTalkerFile = async (talker) => {
 };
 
 module.exports = {
+  whiteOutTalkerFile,
+  restartTalkerFile,
   readTalkerFile,
   getTalkerById,
   writeTalkerFile,
