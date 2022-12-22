@@ -21,9 +21,9 @@ export const restartData = async () => {
   await api.post('/talker/restart');
 }
 
-export const postData = async (endpoint, newData) => {
+export const postData = async (endpoint, newData, config) => {
   try {
-    const { data, status } = await api.post(endpoint, newData);
+    const { data, status } = await api.post(endpoint, newData, config);
     return { data, status };
   } catch (err) {
     return { data: err.response.data, status: err.response.status }

@@ -51,7 +51,13 @@ const removeTalkerById = async (id) => {
   }
 };
 
-const generateId = (talkerFile) => talkerFile[talkerFile.length - 1].id + 1;
+const generateId = (talkerFile) => {
+  try {
+    return talkerFile[talkerFile.length - 1].id + 1;
+  } catch (err) {
+    return 1;
+  }
+};
 
 const writeTalkerFile = async (talker) => {
   try {

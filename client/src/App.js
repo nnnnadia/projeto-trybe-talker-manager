@@ -6,6 +6,7 @@ import Navigation from './components/Navigation';
 import GetTalkerById from './pages/GetTalkerById';
 import Context from './context/Context';
 import PostLogin from './pages/PostLogin';
+import PostTalker from './pages/PostTalker';
 
 function App() {
   const { indexAt } = useContext(Context);
@@ -20,7 +21,8 @@ function App() {
   const pages = [
     <GetTalker />,
     <GetTalkerById />,
-    <PostLogin />
+    <PostLogin />,
+    <PostTalker />
   ];
 
   return (
