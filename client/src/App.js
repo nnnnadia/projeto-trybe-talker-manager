@@ -1,10 +1,11 @@
 import React, { useContext, useEffect } from 'react';
 import { Container, Typography } from '@mui/material';
-import GetTalker from './components/GetTalker';
+import GetTalker from './pages/GetTalker';
 import { clearData } from './requestAPI';
 import Navigation from './components/Navigation';
-import GetTalkerById from './components/GetTalkerById';
+import GetTalkerById from './pages/GetTalkerById';
 import Context from './context/Context';
+import PostLogin from './pages/PostLogin';
 
 function App() {
   const { indexAt } = useContext(Context);
@@ -16,13 +17,17 @@ function App() {
     startFile();
   }, []);
 
-  const pages = [<GetTalker />, <GetTalkerById />];
+  const pages = [
+    <GetTalker />,
+    <GetTalkerById />,
+    <PostLogin />
+  ];
 
   return (
     <>
       <Navigation />
       <Container maxWidth="md" sx={{ paddingBottom: 2 }}>
-        <Typography variant="h3" textAlign="end">Projeto Talker Manager</Typography>
+        <Typography variant="h3" textAlign="end">Talker Manager Project</Typography>
         <Typography variant="overline" textAlign="end" component="div" gutterBottom>Nádia Dutra Tristão</Typography>
         {pages[indexAt]}
       </Container>
