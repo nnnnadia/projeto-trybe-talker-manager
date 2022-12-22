@@ -56,7 +56,7 @@ export default function GetTalkerById() {
         sx={{ height: 'fit-content' }}
         onClick={handleRequest}
       >
-        REQUEST
+        GO
       </Button>
     </Stack>
     <hr />

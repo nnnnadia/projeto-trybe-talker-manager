@@ -26,7 +26,16 @@ export const postData = async (endpoint, newData, config) => {
     const { data, status } = await api.post(endpoint, newData, config);
     return { data, status };
   } catch (err) {
-    return { data: err.response.data, status: err.response.status }
+    return { data: err.response.data, status: err.response.status };
+  }
+}
+
+export const putData = async (endpoint, newData, config) => {
+  try {
+    const { data, status } = await api.put(endpoint, newData, config);
+    return { data, status };
+  } catch (err) {
+    return { data: err.response.data, status: err.response.status };
   }
 }
 
