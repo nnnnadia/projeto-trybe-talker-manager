@@ -71,12 +71,11 @@ export default function DeleteTalker() {
         <ArrowCircleRightIcon />
       </IconButton>
     </Stack>
-    <Stack direction="row" spacing={2} alignItems="center">
+    <Stack direction="row" spacing={2} alignItems="center" marginTop={2}>
       <TextField
         variant="outlined"
         size="small"
         fullWidth
-        margin="dense"
         value="http://localhost:9000/talker/"
         disabled
       />
