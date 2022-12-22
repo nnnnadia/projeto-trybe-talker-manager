@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Container, Typography } from '@mui/material';
 import GetTalker from './components/GetTalker';
 import { clearData } from './requestAPI';
 import Navigation from './components/Navigation';
+import GetTalkerById from './components/GetTalkerById';
+import Context from './context/Context';
 
 function App() {
-  const [indexAt, setIndexAt] = useState(0);
+  const { indexAt } = useContext(Context);
 
   useEffect(() => {
     const startFile = async () => {
@@ -14,11 +16,11 @@ function App() {
     startFile();
   }, []);
 
-  const pages = [<GetTalker />]
+  const pages = [<GetTalker />, <GetTalkerById />];
 
   return (
     <>
-      <Navigation indexAt={indexAt} setIndexAt={setIndexAt} />
+      <Navigation />
       <Container maxWidth="md" sx={{ paddingBottom: 2 }}>
         <Typography variant="h3" textAlign="end">Projeto Talker Manager</Typography>
         <Typography variant="overline" textAlign="end" component="div" gutterBottom>Nádia Dutra Tristão</Typography>

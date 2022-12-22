@@ -2,22 +2,19 @@ import React, { useState } from 'react';
 import { Button, Chip, IconButton, Paper, Stack, TextField, Typography } from '@mui/material';
 import ArrowRightIcon from '@mui/icons-material/ArrowRight';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { requestData, restartData } from '../requestAPI';
+import { requestData } from '../requestAPI';
 
-export default function GetTalker() {
-  const [talkers, setTalkers] = useState();
+export default function GetTalkerById() {
+  const [id, setId] = useState();
+  const [talker, setTalker] = useState();
   const [status, setStatus] = useState();
   const [showDetails, setShowDetails] = useState(false);
 
   const handleRequest = async () => {
-    const { data, status } = await requestData('/talker');
-    setTalkers(data);
+    const { data, status } = await requestData(`/talker/${id}`);
+    setTalker(data);
     setStatus(status);
   };
-
-  const handleRestart = async () => {
-    await restartData();
-  }
 
   const handleDetails = () => {
     setShowDetails(!showDetails);
@@ -30,12 +27,12 @@ export default function GetTalker() {
         : <ArrowRightIcon fontSize="inherit" />
       }
     </IconButton>
-    <Chip label="GET" color="success" sx={{ marginRight: 2 }} />/talker
+    <Chip label="GET" color="success" sx={{ marginRight: 2 }} />/talker/:id
     <Typography variant="body2" hidden={!showDetails}>
-      Retorna um array com os palestrantes cadastrados.
+      Retorna um objeto com os dados do palestrante com o mesmo id informado na rota
     </Typography>
     <Typography variant="body2" hidden={!showDetails}>
-      Retorna um array vazio caso nenhum palestrante esteja cadastrado.
+      Retorna uma mensagem de erro caso nenhum palestrante seja encontrado
     </Typography>
     <Stack direction="row" spacing={2} alignItems="center">
       <TextField
@@ -43,8 +40,14 @@ export default function GetTalker() {
         size="small"
         fullWidth
         margin="dense"
-        value="http://localhost:9000/talker"
+        value="http://localhost:9000/talker/"
         disabled
+      />
+      <TextField
+        variant="outlined"
+        size="small"
+        value={id}
+        onChange={({ target }) => setId(target.value)}
       />
       <Button
         variant="contained"
@@ -59,17 +62,9 @@ export default function GetTalker() {
     <Paper sx={{ padding: '0.3em 1em', marginTop: 1 }}>
       <code>
         <pre>
-          {JSON.stringify(talkers, undefined, 2)}
+          {JSON.stringify(talker, undefined, 2)}
         </pre>
       </code>
     </Paper>
-    <hr />
-    <Button
-      variant="contained"
-      sx={{ height: 'fit-content' }}
-      onClick={handleRestart}
-    >
-      POPULATE
-    </Button>
   </>);
 }

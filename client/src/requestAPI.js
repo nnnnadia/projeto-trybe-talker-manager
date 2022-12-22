@@ -5,8 +5,12 @@ const api = axios.create({
 });
 
 export const requestData = async (endpoint) => {
-  const { data, status } = await api.get(endpoint);
-  return { data, status };
+  try {
+    const { data, status } = await api.get(endpoint);
+    return { data, status };
+  } catch (err) {
+    return { data: err.response.data, status: err.response.status };
+  }
 };
 
 export const clearData = async () => {
