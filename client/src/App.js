@@ -9,6 +9,7 @@ import PostLogin from './pages/PostLogin';
 import PostTalker from './pages/PostTalker';
 import PutTalker from './pages/PutTalker';
 import DeleteTalker from './pages/DeleteTalker';
+import GetTalkerBySearchTerm from './pages/GetTalkerBySearchTerm';
 
 function App() {
   const { indexAt } = useContext(Context);
@@ -26,7 +27,8 @@ function App() {
     <PostLogin />,
     <PostTalker />,
     <PutTalker />,
-    <DeleteTalker />
+    <DeleteTalker />,
+    <GetTalkerBySearchTerm />
   ];
 
   return (

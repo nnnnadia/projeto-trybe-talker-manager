@@ -4,9 +4,9 @@ const api = axios.create({
   baseURL: 'http://localhost:9000',
 });
 
-export const requestData = async (endpoint) => {
+export const requestData = async (endpoint, config) => {
   try {
-    const { data, status } = await api.get(endpoint);
+    const { data, status } = await api.get(endpoint, config);
     return { data, status };
   } catch (err) {
     return { data: err.response.data, status: err.response.status };
