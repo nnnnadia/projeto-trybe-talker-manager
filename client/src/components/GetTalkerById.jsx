@@ -34,6 +34,8 @@ export default function GetTalkerById() {
     <Typography variant="body2" hidden={!showDetails}>
       Retorna uma mensagem de erro caso nenhum palestrante seja encontrado
     </Typography>
+    <hr />
+    <Typography variant="h6" component="div" textAlign="center" textTransform="uppercase">Request</Typography>
     <Stack direction="row" spacing={2} alignItems="center">
       <TextField
         variant="outlined"
@@ -58,7 +60,10 @@ export default function GetTalkerById() {
       </Button>
     </Stack>
     <hr />
-    <Typography variant="button" margin={2}>Status: {status}</Typography>
+    <Typography variant="h6" component="div" textAlign="center" textTransform="uppercase">Response</Typography>
+    <Typography variant="body2" component="span">Status: </Typography>
+    <Paper sx={{ padding: '0.3em 0.5em' }} component="span">{status}</Paper>
+    <Typography variant="body2">Body:</Typography>
     <Paper sx={{ padding: '0.3em 1em', marginTop: 1 }}>
       <code>
         <pre>
