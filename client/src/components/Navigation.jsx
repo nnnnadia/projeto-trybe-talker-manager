@@ -17,7 +17,7 @@ export default function Navigation() {
 
   return (
     <>
-      <Stack spacing={2} sx={{ position: 'absolute', top: 50, left: 50 }}>
+      <Stack spacing={2} sx={{ position: 'fixed', top: 50, left: 50 }}>
         <Fab color="primary" disabled={indexAt === 0} onClick={() => setIndexAt(indexAt - 1)}>
           <ArrowUpwardIcon />
         </Fab>
