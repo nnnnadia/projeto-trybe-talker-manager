@@ -48,7 +48,7 @@ export default function MenuNavigationItems(props) {
           label="PUT"
           color="warning"
           sx={{ marginRight: 2 }}
-        />/talker
+        />/talker/:id
       </MenuItem>
       <MenuItem onClick={() => handleChange(5)}>
         <Chip

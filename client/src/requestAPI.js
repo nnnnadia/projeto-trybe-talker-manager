@@ -13,8 +13,13 @@ export const requestData = async (endpoint) => {
   }
 };
 
-export const clearData = async () => {
-  await api.delete('/talker');
+export const clearData = async (endpoint, config) => {
+  try {
+    const { data, status } = await api.delete(endpoint, config);
+    return { data, status };
+  } catch (err) {
+    return { data: err.response.data, status: err.response.status };
+  }
 };
 
 export const restartData = async () => {

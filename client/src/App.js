@@ -8,13 +8,14 @@ import Context from './context/Context';
 import PostLogin from './pages/PostLogin';
 import PostTalker from './pages/PostTalker';
 import PutTalker from './pages/PutTalker';
+import DeleteTalker from './pages/DeleteTalker';
 
 function App() {
   const { indexAt } = useContext(Context);
 
   useEffect(() => {
     const startFile = async () => {
-      await clearData();
+      await clearData('/talker');
     }
     startFile();
   }, []);
@@ -24,7 +25,8 @@ function App() {
     <GetTalkerById />,
     <PostLogin />,
     <PostTalker />,
-    <PutTalker />
+    <PutTalker />,
+    <DeleteTalker />
   ];
 
   return (
