@@ -23,53 +23,55 @@ export default function GetTalker() {
     setShowDetails(!showDetails);
   };
 
-  return (<>
-    <IconButton size="small" onClick={handleDetails}>
-      {showDetails
-        ? <ArrowDropDownIcon fontSize="inherit" />
-        : <ArrowRightIcon fontSize="inherit" />
-      }
-    </IconButton>
-    <Chip label="GET" color="success" sx={{ marginRight: 2 }} />/talker
-    <Typography variant="body2" hidden={!showDetails}>
-      Retorna um array com os palestrantes cadastrados.
-    </Typography>
-    <Typography variant="body2" hidden={!showDetails}>
-      Retorna um array vazio caso nenhum palestrante esteja cadastrado.
-    </Typography>
-    <Stack direction="row" spacing={2} alignItems="center">
-      <TextField
-        variant="outlined"
-        size="small"
-        fullWidth
-        margin="dense"
-        value="http://localhost:9000/talker"
-        disabled
-      />
+  return (
+    <>
+      <IconButton size="small" onClick={handleDetails}>
+        {showDetails
+          ? <ArrowDropDownIcon fontSize="inherit" />
+          : <ArrowRightIcon fontSize="inherit" />
+        }
+      </IconButton>
+      <Chip label="GET" color="success" sx={{ marginRight: 2 }} />/talker
+      <Typography variant="body2" hidden={!showDetails}>
+        Retorna um array com os palestrantes cadastrados.
+      </Typography>
+      <Typography variant="body2" hidden={!showDetails}>
+        Retorna um array vazio caso nenhum palestrante esteja cadastrado.
+      </Typography>
+      <Stack direction="row" spacing={2} alignItems="center">
+        <TextField
+          variant="outlined"
+          size="small"
+          fullWidth
+          margin="dense"
+          value="http://localhost:9000/talker"
+          disabled
+        />
+        <Button
+          variant="contained"
+          sx={{ height: 'fit-content' }}
+          onClick={handleRequest}
+        >
+          REQUEST
+        </Button>
+      </Stack>
+      <hr />
+      <Typography variant="button" margin={2}>Status: {status}</Typography>
+      <Paper sx={{ padding: '0.3em 1em', marginTop: 1 }}>
+        <code>
+          <pre>
+            {JSON.stringify(talkers, undefined, 2)}
+          </pre>
+        </code>
+      </Paper>
+      <hr />
       <Button
         variant="contained"
         sx={{ height: 'fit-content' }}
-        onClick={handleRequest}
+        onClick={handleRestart}
       >
-        REQUEST
+        POPULATE
       </Button>
-    </Stack>
-    <hr />
-    <Typography variant="button" margin={2}>Status: {status}</Typography>
-    <Paper sx={{ padding: '0.3em 1em', marginTop: 1 }}>
-      <code>
-        <pre>
-          {JSON.stringify(talkers, undefined, 2)}
-        </pre>
-      </code>
-    </Paper>
-    <hr />
-    <Button
-      variant="contained"
-      sx={{ height: 'fit-content' }}
-      onClick={handleRestart}
-    >
-      POPULATE
-    </Button>
-  </>);
+    </>
+  );
 }
