@@ -13,6 +13,8 @@ export default function Navigation() {
 
   const [open, setOpen] = useState(false);
 
+  const handleClose = () => setOpen(false);
+
   return (
     <>
       <Stack spacing={2} sx={{ position: 'absolute', top: 50, left: 50 }}>
@@ -30,9 +32,9 @@ export default function Navigation() {
         anchorReference="anchorPosition"
         anchorPosition={{ top: 0, left: 150 }}
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={handleClose}
       >
-        <MenuNavigationItems />
+        <MenuNavigationItems handleClose={handleClose}/>
       </Menu>
     </>
   );
