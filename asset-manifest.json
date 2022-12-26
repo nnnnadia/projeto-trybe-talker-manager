@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/projeto-trybe-talker-manager/static/css/main.e6c13ad2.css",
+    "main.js": "/projeto-trybe-talker-manager/static/js/main.d7adedbd.js",
+    "index.html": "/projeto-trybe-talker-manager/index.html",
+    "main.e6c13ad2.css.map": "/projeto-trybe-talker-manager/static/css/main.e6c13ad2.css.map",
+    "main.d7adedbd.js.map": "/projeto-trybe-talker-manager/static/js/main.d7adedbd.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.d7adedbd.js"
+  ]
+}
