@@ -8,7 +8,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 const HTTP_OK_STATUS = 200;
-const PORT = '9000';
+const PORT = process.env.PORT || '9000';
 
 // não remova esse endpoint, e para o avaliador funcionar
 app.get('/', (_request, response) => {
