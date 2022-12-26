@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: `${process.env.REACT_PROTOCOL}://${process.env.REACT_HOST}`,
+  baseURL: `${process.env.REACT_APP_PROTOCOL}://${process.env.REACT_APP_HOST}`,
 });
 
 export const requestData = async (endpoint, config) => {
